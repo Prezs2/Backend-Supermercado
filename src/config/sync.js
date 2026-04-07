@@ -1,4 +1,4 @@
-const sequelize = require('../config/database');
+const sequelize = require('./database');
 require('../models/index');
 
 class DatabaseSync{
