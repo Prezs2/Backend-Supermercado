@@ -17,7 +17,21 @@ const Provider = sequelize.define('provider',{
     },
     Email: {
         type: DataTypes.STRING(100),
-        allowNull: false
+        allowNull: false,
+        unique: {
+            name: 'unique_email',
+            msg: 'Email already exists'
+        },
+        validate: {
+            isEmail: true,
+            notEmpty:{
+                msg: 'Email can not be empty'
+            },
+            len:{
+                args:[5, 100],
+                msg: 'Email must be between 5 and 100 characters'
+            }
+        }
     },
     City: {
         type: DataTypes.STRING(50),
