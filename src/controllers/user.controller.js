@@ -1,13 +1,13 @@
-const ProductService = require('../services/product.service');
+const UserService = require('../services/user.service');
 
-class ProductController {
-    static async getAllProducts(req, res){
+class UserController {
+    static async getAllUsers(req, res){
         try{
-            const Products = await ProductService.getAllProducts();
+            const users = await UserService.getAllUsers();
 
             return res.status(200).json({
-                mesage: 'Products retrieved successfully',
-                data: Products
+                mesage: 'Users retrieved successfully',
+                data: users
             });
         } catch(error){
             return res.status(500).json({
@@ -16,14 +16,14 @@ class ProductController {
         }    
     }
 
-    static async getProductById(req, res){
+    static async getUserById(req, res){
         try {
             const { id } = req.params;
-            const Product = await ProductService.getProductById(id);
+            const user = await UserService.getUserById(id);
 
             return res.status(200).json({
-                message: 'Product retrieved successfully',
-                data: Product
+                message: 'User retrieved successfully',
+                data: user
             });
 
         } catch (error) {
@@ -33,13 +33,13 @@ class ProductController {
         }
     }
 
-    static async createProduct(req, res) {
+    static async createUser(req, res) {
         try {
-            const productData = req.body;
-            const newProduct = await ProductService.createProduct(productData);
+            const userData = req.body;
+            const newUser = await UserService.createUser(userData);
             return res.status(201).json({
-                message: 'Product created successfully',
-                data: newProduct
+                message: 'User created successfully',
+                data: newUser
             });
         } catch (error) {
             return res.status(500).json({
@@ -48,15 +48,15 @@ class ProductController {
         }
     }
 
-    static async updateProduct(req, res) {
+    static async updateUser(req, res) {
         try {
             const { id } = req.params;
-            const productData = req.body;
-            const updatedProduct = await ProductService.updateProduct(id, productData);
+            const userData = req.body;
+            const updatedUser = await UserService.updateUser(id, userData);
 
             return res.status(200).json({
-                message: 'Product updated successfully',
-                data: updatedProduct
+                message: 'User updated successfully',
+                data: updatedUser
             });
         } catch (error) {
             return res.status(500).json({
@@ -65,10 +65,10 @@ class ProductController {
         }
     }
 
-    static async deleteProduct(req, res) {
+    static async deleteUser(req, res) {
         try {
             const { id } = req.params;
-            const result = await ProductService.deleteProduct(id);    
+            const result = await UserService.deleteUser(id);    
             return res.status(200).json({
                 message: result.message
             });
@@ -80,4 +80,4 @@ class ProductController {
     }
 }
 
-exports.ProductController = ProductController;
+module.exports = UserController;

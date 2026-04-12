@@ -1,13 +1,13 @@
-const ProviderService = require('../services/provider.service');
+const ProductService = require('../services/product.service');
 
-class ProviderController {
-    static async getAllProviders(req, res){
+class ProductController {
+    static async getAllProducts(req, res){
         try{
-            const providers = await ProviderService.getAllProviders();
+            const Products = await ProductService.getAllProducts();
 
             return res.status(200).json({
-                mesage: 'Providers retrieved successfully',
-                data: providers
+                mesage: 'Products retrieved successfully',
+                data: Products
             });
         } catch(error){
             return res.status(500).json({
@@ -16,14 +16,14 @@ class ProviderController {
         }    
     }
 
-    static async getProviderById(req, res){
+    static async getProductById(req, res){
         try {
             const { id } = req.params;
-            const provider = await ProviderService.getProviderById(id);
+            const Product = await ProductService.getProductById(id);
 
             return res.status(200).json({
-                message: 'provider retrieved successfully',
-                data: provider
+                message: 'Product retrieved successfully',
+                data: Product
             });
 
         } catch (error) {
@@ -33,13 +33,13 @@ class ProviderController {
         }
     }
 
-    static async createProvider(req, res) {
+    static async createProduct(req, res) {
         try {
-            const providerData = req.body;
-            const newProvider = await ProviderService.createProvider(providerData);
+            const productData = req.body;
+            const newProduct = await ProductService.createProduct(productData);
             return res.status(201).json({
-                message: 'Provider created successfully',
-                data: newProvider
+                message: 'Product created successfully',
+                data: newProduct
             });
         } catch (error) {
             return res.status(500).json({
@@ -48,15 +48,15 @@ class ProviderController {
         }
     }
 
-    static async updateProvider(req, res) {
+    static async updateProduct(req, res) {
         try {
             const { id } = req.params;
-            const providerData = req.body;
-            const updatedProvider = await ProviderService.updateProvider(id, providerData);
+            const productData = req.body;
+            const updatedProduct = await ProductService.updateProduct(id, productData);
 
             return res.status(200).json({
-                message: 'Provider updated successfully',
-                data: updatedProvider
+                message: 'Product updated successfully',
+                data: updatedProduct
             });
         } catch (error) {
             return res.status(500).json({
@@ -65,10 +65,10 @@ class ProviderController {
         }
     }
 
-    static async deleteProvider(req, res) {
+    static async deleteProduct(req, res) {
         try {
             const { id } = req.params;
-            const result = await ProviderService.deleteProvider(id);    
+            const result = await ProductService.deleteProduct(id);    
             return res.status(200).json({
                 message: result.message
             });
@@ -80,4 +80,4 @@ class ProviderController {
     }
 }
 
-exports.ProviderController = ProviderController;
+module.exports = ProductController;

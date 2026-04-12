@@ -1,5 +1,5 @@
 const express = require('express');
-const UserController = require('../controller/user.controller');
+const UserController = require('../controllers/user.controller');
 
 const router = express.Router();
 
@@ -42,7 +42,6 @@ router.get('/', UserController.getAllUsers);
  */
 router.get('/:id', UserController.getUserById);
 
-
 /** 
  * @swagger
  * /api/users:
@@ -57,27 +56,71 @@ router.get('/:id', UserController.getUserById);
  *             type: object
  *             required:
  *               - Name
- *               - Phone
  *               - Email
- *               - Role
+ *               - Rol
  *             properties:
- *               idNumber:
+ *               Name:
  *                 type: string
- *                 example: 123456789
- *               firstName:
+ *                 example: juan prueba
+ *               Email:
  *                 type: string
- *                 example: Natalia
- *               lastName:  
+ *                 example: juan.prueba@example.com
+ *               Rol:  
  *                 type: string
- *                 example: Castellanos
- *               email:
- *                 type: string
- *                 example: natalia.castellanos@example.com
- *               password:
- *                 type: string
- *                 example: securePassword123
+ *                 example: Empleado
  *     responses:
  *       201:
  *        description: User created successfully
  */
 router.post('/', UserController.createUser);
+
+/** 
+ * @swagger
+ * /api/users/{id}:
+ *  put:
+ *     summary: Update a user by ID
+ *     tags: [Users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               Name:
+ *                 type: string
+ *                 example: Natalia
+ *               Rol:
+ *                type: string,
+ *                example: Administrador
+ *     responses:
+ *       200:
+ *        description: User updated successfully
+ */
+router.put('/:id', UserController.updateUser);
+
+/** 
+ * @swagger
+ * /api/users/{id}:
+ *  delete:
+ *     summary: Delete a user by ID
+ *     tags: [Users]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         schema:
+ *           type: integer
+ *         required: true
+ *     responses:
+ *       200:
+ *        description: User deleted successfully
+ */ 
+router.delete('/:id', UserController.deleteUser);
+
+module.exports = router;

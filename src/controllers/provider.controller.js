@@ -1,13 +1,13 @@
-const UserService = require('../services/user.service');
+const ProviderService = require('../services/provider.service');
 
-class UserController {
-    static async getAllUsers(req, res){
+class ProviderController {
+    static async getAllProviders(req, res){
         try{
-            const users = await UserService.getAllUsers();
+            const providers = await ProviderService.getAllProviders();
 
             return res.status(200).json({
-                mesage: 'Users retrieved successfully',
-                data: users
+                mesage: 'Providers retrieved successfully',
+                data: providers
             });
         } catch(error){
             return res.status(500).json({
@@ -16,14 +16,14 @@ class UserController {
         }    
     }
 
-    static async getUserById(req, res){
+    static async getProviderById(req, res){
         try {
             const { id } = req.params;
-            const user = await UserService.getUserById(id);
+            const provider = await ProviderService.getProviderById(id);
 
             return res.status(200).json({
-                message: 'User retrieved successfully',
-                data: user
+                message: 'provider retrieved successfully',
+                data: provider
             });
 
         } catch (error) {
@@ -33,13 +33,13 @@ class UserController {
         }
     }
 
-    static async createUser(req, res) {
+    static async createProvider(req, res) {
         try {
-            const userData = req.body;
-            const newUser = await UserService.createUser(userData);
+            const providerData = req.body;
+            const newProvider = await ProviderService.createProvider(providerData);
             return res.status(201).json({
-                message: 'User created successfully',
-                data: newUser
+                message: 'Provider created successfully',
+                data: newProvider
             });
         } catch (error) {
             return res.status(500).json({
@@ -48,15 +48,15 @@ class UserController {
         }
     }
 
-    static async updateUser(req, res) {
+    static async updateProvider(req, res) {
         try {
             const { id } = req.params;
-            const userData = req.body;
-            const updatedUser = await UserService.updateUser(id, userData);
+            const providerData = req.body;
+            const updatedProvider = await ProviderService.updateProvider(id, providerData);
 
             return res.status(200).json({
-                message: 'User updated successfully',
-                data: updatedUser
+                message: 'Provider updated successfully',
+                data: updatedProvider
             });
         } catch (error) {
             return res.status(500).json({
@@ -65,10 +65,10 @@ class UserController {
         }
     }
 
-    static async deleteUser(req, res) {
+    static async deleteProvider(req, res) {
         try {
             const { id } = req.params;
-            const result = await UserService.deleteUser(id);    
+            const result = await ProviderService.deleteProvider(id);    
             return res.status(200).json({
                 message: result.message
             });
@@ -80,4 +80,4 @@ class UserController {
     }
 }
 
-exports.UserController = UserController;
+module.exports = ProviderController;
