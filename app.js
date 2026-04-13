@@ -5,6 +5,7 @@ const swaggerSpec = require('./src/config/swagger');
 
 const userRoutes = require('./src/routes/user.routes');
 const productRoutes = require('./src/routes/product.routes');
+const providerRoutes = require('./src/routes/provider.routes');
 
 const app = express();
 const PORT = 3000;
@@ -16,6 +17,7 @@ if(process.env.NODE_ENV === 'development') {
 app.use(express.json());
 app.use('/api/users', userRoutes);
 app.use('/api/products', productRoutes);
+app.use('/api/providers', providerRoutes);
 
 app.get('/', (req, res) => {
     res.send('Server is running successfully')
