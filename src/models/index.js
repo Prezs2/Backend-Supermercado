@@ -1,9 +1,9 @@
 const sequelize = require('../config/database');
-const User = require('./User');
-const Product = require('./Product');
-const Provider = require('./Provider');
-const Sale = require('./Sale');
-const detailSale = require('./detailSale');
+const User = require('./user.model');
+const Product = require('./product.model');
+const Provider = require('./provider.model');
+const Sale = require('./sale.model');
+const detailSale = require('./detailSale.model');
 
 
 User.hasMany(Sale, {

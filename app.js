@@ -15,9 +15,9 @@ if(process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.json());
-app.use('/api/users', userRoutes);
-app.use('/api/products', productRoutes);
-app.use('/api/providers', providerRoutes);
+app.use('/api', userRoutes);
+app.use('/api', productRoutes);
+app.use('/api', providerRoutes);
 
 app.get('/', (req, res) => {
     res.send('Server is running successfully')
