@@ -1,6 +1,8 @@
 const express = require('express');
-const swaggerUi = require('swagger-ui-express');
+const cors = require('cors');
+
 const DatabaseSync = require('./src/config/sync');
+const swaggerUi = require('swagger-ui-express');
 const swaggerSpec = require('./src/config/swagger');
 
 const userRoutes = require('./src/routes/user.routes');
@@ -13,6 +15,10 @@ const PORT = 3000;
 if(process.env.NODE_ENV === 'development') {
     app.use('/swagger', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 }
+
+app.use(cors({
+  origin: 'http://localhost:5173'
+}));
 
 app.use(express.json());
 app.use('/api', userRoutes);
