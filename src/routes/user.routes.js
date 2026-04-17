@@ -20,11 +20,11 @@ const router = express.Router();
  *       200:
  *        description: Users retrieved successfully
  */
-router.get('/', UserController.getAllUsers);
+router.get('/users', UserController.getAllUsers);
 
 /** 
  * @swagger
- * /api/users/{id}:
+ * /api/user/{id}:
  *  get:
  *     summary: Retrieve a user by ID
  *     tags: [Users]
@@ -40,11 +40,11 @@ router.get('/', UserController.getAllUsers);
  *       404:
  *        description: User not found
  */
-router.get('/:id', UserController.getUserById);
+router.get('/user/:id', UserController.getUserById);
 
 /** 
  * @swagger
- * /api/users:
+ * /api/user/create:
  *  post:
  *     summary: Create a new user
  *     tags: [Users]
@@ -72,11 +72,11 @@ router.get('/:id', UserController.getUserById);
  *       201:
  *        description: User created successfully
  */
-router.post('/', UserController.createUser);
+router.post('/user/create', UserController.createUser);
 
 /** 
  * @swagger
- * /api/users/{id}:
+ * /api/user/update/{id}:
  *  put:
  *     summary: Update a user by ID
  *     tags: [Users]
@@ -103,11 +103,11 @@ router.post('/', UserController.createUser);
  *       200:
  *        description: User updated successfully
  */
-router.put('/:id', UserController.updateUser);
+router.put('/user/update/:id', UserController.updateUser);
 
 /** 
  * @swagger
- * /api/users/{id}:
+ * /api/user/delete/{id}:
  *  delete:
  *     summary: Delete a user by ID
  *     tags: [Users]
@@ -121,6 +121,6 @@ router.put('/:id', UserController.updateUser);
  *       200:
  *        description: User deleted successfully
  */ 
-router.delete('/:id', UserController.deleteUser);
+router.delete('/user/delete/:id', UserController.deleteUser);
 
 module.exports = router;

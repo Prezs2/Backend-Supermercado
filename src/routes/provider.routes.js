@@ -20,11 +20,11 @@ const router = express.Router();
  *       200:
  *        description: Providers retrieved successfully
  */
-router.get('/', ProviderController.getAllProviders);
+router.get('/Providers', ProviderController.getAllProviders);
 
 /** 
  * @swagger
- * /api/Providers/{id}:
+ * /api/provider/{id}:
  *  get:
  *     summary: Retrieve a Provider by ID
  *     tags: [Providers]
@@ -40,11 +40,11 @@ router.get('/', ProviderController.getAllProviders);
  *       404:
  *        description: Provider not found
  */
-router.get('/:id', ProviderController.getProviderById);
+router.get('/provider/:id', ProviderController.getProviderById);
 
 /** 
  * @swagger
- * /api/Providers:
+ * /api/providers/create:
  *  post:
  *     summary: Create a new Provider
  *     tags: [Providers]
@@ -76,11 +76,11 @@ router.get('/:id', ProviderController.getProviderById);
  *       201:
  *        description: Provider created successfully
  */
-router.post('/', ProviderController.createProvider);
+router.post('/provider/create', ProviderController.createProvider);
 
 /** 
  * @swagger
- * /api/Providers/{id}:
+ * /api/provider/update/{id}:
  *  put:
  *     summary: Update a Provider by ID
  *     tags: [Providers]
@@ -110,11 +110,11 @@ router.post('/', ProviderController.createProvider);
  *       200:
  *        description: Provider updated successfully
  */
-router.put('/:id', ProviderController.updateProvider);
+router.put('/provider/update/:id', ProviderController.updateProvider);
 
 /** 
  * @swagger
- * /api/Providers/{id}:
+ * /api/provider/delete/{id}:
  *  delete:
  *     summary: Delete a Provider by ID
  *     tags: [Providers]
@@ -128,6 +128,6 @@ router.put('/:id', ProviderController.updateProvider);
  *       200:
  *        description: Provider deleted successfully
  */ 
-router.delete('/:id', ProviderController.deleteProvider);
+router.delete('/provider/delete/:id', ProviderController.deleteProvider);
 
 module.exports = router;

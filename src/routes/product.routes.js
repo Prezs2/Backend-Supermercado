@@ -20,11 +20,11 @@ const router = express.Router();
  *       200:
  *        description: Products retrieved successfully
  */
-router.get('/', ProductController.getAllProducts);
+router.get('/Products', ProductController.getAllProducts);
 
 /** 
  * @swagger
- * /api/Products/{id}:
+ * /api/product/{id}:
  *  get:
  *     summary: Retrieve a Product by ID
  *     tags: [Products]
@@ -40,11 +40,11 @@ router.get('/', ProductController.getAllProducts);
  *       404:
  *        description: Product not found
  */
-router.get('/:id', ProductController.getProductById);
+router.get('/product/:id', ProductController.getProductById);
 
 /** 
  * @swagger
- * /api/Products:
+ * /api/product/create:
  *  post:
  *     summary: Create a new Product
  *     tags: [Products]
@@ -72,11 +72,11 @@ router.get('/:id', ProductController.getProductById);
  *       201:
  *        description: Product created successfully
  */
-router.post('/', ProductController.createProduct);
+router.post('/product/create', ProductController.createProduct);
 
 /** 
  * @swagger
- * /api/Products/{id}:
+ * /api/product/update/{id}:
  *  put:
  *     summary: Update a Product by ID
  *     tags: [Products]
@@ -103,11 +103,11 @@ router.post('/', ProductController.createProduct);
  *       200:
  *        description: Product updated successfully
  */
-router.put('/:id', ProductController.updateProduct);
+router.put('/product/update/:id', ProductController.updateProduct);
 
 /** 
  * @swagger
- * /api/Products/{id}:
+ * /api/product/delete/{id}:
  *  delete:
  *     summary: Delete a Product by ID
  *     tags: [Products]
@@ -121,6 +121,6 @@ router.put('/:id', ProductController.updateProduct);
  *       200:
  *        description: Product deleted successfully
  */ 
-router.delete('/:id', ProductController.deleteProduct);
+router.delete('/product/delete/:id', ProductController.deleteProduct);
 
 module.exports = router;
