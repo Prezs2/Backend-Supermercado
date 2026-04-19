@@ -2,20 +2,20 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 const Provider = sequelize.define('provider',{
-    ProviderID: {
+    providerID: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    Name: {
+    name: {
         type: DataTypes.STRING(100),
         allowNull: false
     },
-    Phone: {
+    phone: {
         type: DataTypes.STRING(10),
         allowNull: false
     },
-    Email: {
+    email: {
         type: DataTypes.STRING(100),
         allowNull: false,
         unique: {
@@ -33,7 +33,7 @@ const Provider = sequelize.define('provider',{
             }
         }
     },
-    City: {
+    city: {
         type: DataTypes.STRING(50),
         allowNull: false
     }

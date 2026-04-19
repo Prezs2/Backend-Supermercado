@@ -4,16 +4,16 @@ const Product = require('./product.model');
 const Sale = require('./sale.model');
 
 const DetailSale = sequelize.define('detail_sale',{
-    DetailSaleID: {
+    detailSaleID: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    SaleID: {
+    saleID: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    ProductID: {
+    productID: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
@@ -44,4 +44,4 @@ const DetailSale = sequelize.define('detail_sale',{
     paranoid: true
 })
 
-exports = module.exports = DetailSale;
+module.exports = DetailSale;

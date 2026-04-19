@@ -3,16 +3,16 @@ const sequelize = require('../config/database');
 const User = require('./user.model');
 
 const Sale = sequelize.define('sale',{
-    SaleID: {
+    saleID: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    UserID: {
+    userID: {
         type: DataTypes.INTEGER,
         allowNull: false
     },
-    Date: {
+    date: {
         type: DataTypes.DATE,
         allowNull: false,
         defaultValue: DataTypes.NOW,
@@ -39,4 +39,4 @@ const Sale = sequelize.define('sale',{
     paranoid: true
 })
 
-exports = module.exports = Sale;
+module.exports = Sale;

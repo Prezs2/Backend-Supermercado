@@ -3,12 +3,12 @@ const sequelize = require('../config/database');
 const Provider = require('./provider.model');
 
 const Product = sequelize.define('product',{
-    ProductID: {
+    productID: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
     },
-    Name: {
+    name: {
         type: DataTypes.STRING(100),
         allowNull: false,
         unique: {
@@ -16,11 +16,11 @@ const Product = sequelize.define('product',{
             msg: 'Product name already exists'
         }
     },
-    Description: {
+    description: {
         type: DataTypes.STRING(255),
         allowNull: true
     },
-    Price: {
+    price: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
         validate:{
@@ -37,7 +37,7 @@ const Product = sequelize.define('product',{
             }
         }
     },
-    Stock: {
+    stock: {
         type: DataTypes.INTEGER,
         allowNull: false,
         defaultValue: 0,
@@ -51,7 +51,7 @@ const Product = sequelize.define('product',{
             }
         }
     },
-    ProviderID: {
+    providerID: {
         type: DataTypes.INTEGER,
         allowNull: false
     } 
