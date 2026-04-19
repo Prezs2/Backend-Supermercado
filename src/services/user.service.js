@@ -25,8 +25,14 @@ class UserService {
             throw new Error('Email already exists');
         }
 
-        const createUser = user.toJSON();
-        return createUser;
+        const user = await User.create({
+            name,
+            email,
+            rol
+        });
+
+        const createdUser = user.toJSON();
+        return createdUser;
     }
 
     static async updateUser(id, userData){

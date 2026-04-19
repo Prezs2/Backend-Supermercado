@@ -3,7 +3,7 @@ const sequelize = require('../config/database');
 const Provider = require('./provider.model');
 
 const Product = sequelize.define('product',{
-    productID: {
+    productid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
@@ -51,7 +51,7 @@ const Product = sequelize.define('product',{
             }
         }
     },
-    providerID: {
+    providerid: {
         type: DataTypes.INTEGER,
         allowNull: false
     } 

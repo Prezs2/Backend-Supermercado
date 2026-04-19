@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 const sequelize = require('../config/database');
 
 const Provider = sequelize.define('provider',{
-    providerID: {
+    providerid: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true
