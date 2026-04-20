@@ -25,7 +25,14 @@ class ProviderService {
             throw new Error('Email already exists');
         }
 
-        const createProvider = Provider.toJSON();
+        const provider = await Provider.create({
+            name,
+            phone,
+            email,
+            city
+        });
+
+        const createProvider = provider.toJSON();
         return createProvider;
     }
 
@@ -37,9 +44,9 @@ class ProviderService {
         }
 
         const { name, phone, city } = ProviderData;
-        await Provider.update({ name, phone, city });
+        const provider =  await Provider.update({ name, phone, city });
 
-        const updatedProvider = Provider.toJSON();
+        const updatedProvider = provider.toJSON();
         return updatedProvider;
     }
 
@@ -50,7 +57,7 @@ class ProviderService {
             throw new Error('Provider not found');
         }
 
-        await Provider.destroy();
+        await Provider.destroy({ force: true });
         return { message: 'Provider deleted successfully' };
     }
 }

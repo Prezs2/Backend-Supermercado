@@ -26,10 +26,10 @@ class ProductService {
             throw new Error('Product already exists');
         }
 
-        const Product = await Product.create({ name, price, stock });
-        const createProducti = Product.toJSON();
+        const product = await Product.create({ name, price, stock });
+        const createProduct = product.toJSON();
 
-        return createProducti;
+        return createProduct;
     }
 
     static async updateProduct(id, ProductData){
@@ -40,9 +40,9 @@ class ProductService {
         }
 
         const { price, stock } = ProductData;
-        await Product.update({ price, stock });
+        const product = await Product.update({ price, stock });
 
-        const updatedProduct = Product.toJSON();
+        const updatedProduct = product.toJSON();
         return updatedProduct;
     }
 
@@ -53,7 +53,7 @@ class ProductService {
             throw new Error('Product not found');
         }
 
-        await Product.destroy();
+        await Product.destroy({ force: true });
         return { message: 'Product deleted successfully' };
     }
 

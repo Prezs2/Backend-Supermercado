@@ -3,7 +3,7 @@ const { User } = require('../models');
 class UserService {
     static async getAllUsers() {
         return await User.findAll({
-            order: [['UserID', 'DESC']],
+            order: [['userid', 'DESC']],
         });
     }
 
@@ -53,10 +53,10 @@ class UserService {
         const user = await User.findByPk(id);
 
         if(!user) {
-            throw new Error('User not found');
+            throw new Error('User not found ' + id);
         }
 
-        await user.destroy();
+        await user.destroy({ force: true });
         return { message: 'User deleted successfully' };
     }
 }
