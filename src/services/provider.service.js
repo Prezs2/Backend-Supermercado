@@ -3,7 +3,7 @@ const { Provider } = require('../models');
 class ProviderService {
     static async getAllProviders() {
         return await Provider.findAll({
-            order: [['ProviderID', 'DESC']],
+            order: [['providerid', 'DESC']],
         });
     }
 
